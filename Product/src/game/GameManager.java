@@ -1,5 +1,6 @@
 package game;
 
+import main.View;
 import main.system;
 import template.Template;
 import ship.ListOfShips;
@@ -14,9 +15,9 @@ public class GameManager {
         Template.showBattleMenu();
         int selection = Integer.parseInt(system.scanner.nextLine());
 
-        System.out.println("Nhập kích thước bảng (10 -> 20): ");
+        System.out.println("Choose Board Size (10 -> 20):");
         kichThuoc = Integer.parseInt(system.scanner.nextLine());
-
+        View.clearScreen();
         if (selection == 1)       { // Play with computer
             OnePlayer onePlayer = new OnePlayer();
             onePlayer.play();

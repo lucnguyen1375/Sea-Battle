@@ -1,6 +1,8 @@
 package data;
 
 import game.Player;
+import main.View;
+import main.system;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -29,11 +31,14 @@ public class FileRank {
     }
 
     public static void showRank(){
+        System.out.println("__________________________________");
         System.out.printf("|%-5s|%-20s|%-5s|%n", "Rank", "Tên", "Score");
         System.out.println("|-----|--------------------|-----|");
         for(int i = 0; i < rank.size(); i++) {
             System.out.printf("|%-5d|%-20s|%-5d|%n", (i + 1), rank.get(i).getName(), rank.get(i).getScore());
         }
+        System.out.println("----------------------------------");
+        View.toContinue();
     }
     public static void sortBxh() {
         Collections.sort(rank, new RankComparator());

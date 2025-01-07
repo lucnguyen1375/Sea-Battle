@@ -9,8 +9,8 @@ public class Turn {
     public static void turn(Player player, Player enemy)
     {
         // In trạng thái của người chơi
-        System.out.println("Số ô đã bắn ở mặt trận địch: " + player.getSoODaBan());
-        System.out.println("Số tàu đã phá: " + player.getSoTauDaPha());
+        System.out.println("A number of shoot: " + player.getSoODaBan());
+        System.out.println("A number of ship you had destroy: " + player.getSoTauDaPha());
         System.out.println("Số tàu còn lại của người chơi: " + player.getSoTauConLai());
         System.out.println("Trạng thái tàu của " + player.getName());
         int checkKhaiHoa = 0;

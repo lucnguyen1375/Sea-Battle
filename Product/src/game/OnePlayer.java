@@ -1,6 +1,7 @@
 package game;
 
 import data.FileRank;
+import main.View;
 import main.system;
 import template.Template;
 
@@ -12,12 +13,13 @@ public class OnePlayer {
 
         // Player enter information and placeship
         Player player;
-        System.out.println("Nhập tên người chơi: ");
+        System.out.println("Enter player's name: ");
         String name = system.scanner.nextLine();
         player = new Player(name);
 
-        System.out.println("Người chơi " + player.getName() + " đặt tàu: ");
-        Template.showPlaceShipOption();
+
+        System.out.println("Player " + player.getName() + " place ship: ");
+        Template.showPlaceShipOption(); // Place by hand or randomly
         while(true){
             int selection1 = Integer.parseInt(system.scanner.nextLine());
             if (selection1==1) {
@@ -32,28 +34,32 @@ public class OnePlayer {
                 Template.enterAgain();
             }
         }
+
+        View.clearScreen();
+        System.out.println("Your Board: ");
         ShowBoard.showBoard(player);
-        System.out.println("-------------------------------------------------");
+
+        View.toContinue();
         // InGame
 
         while(true) {
-            System.out.println("Lượt người chơi " + player.getName());
+            System.out.println("Your turn.");
             Turn.turn(player, bot);
             if (player.getSoTauDaPha() == 5) {
-                System.out.println(player.getName() + " đã giành chiến thắng");
-                System.out.println("-------------------------------------------------");
+                System.out.println("You Won! Congratulations!");
                 FileRank.updateBxh(player);
+                View.toContinue();
                 break;
             }
-            System.out.println("-------------------------------------------------");
             Turn.botTurn(bot, player);
+            System.out.println("Bot is playing.");
             //if (bot.soLanBan == 10) return;
             if (bot.getSoTauDaPha() == 5) {
-                System.out.println("Máy đã giành chiến thắng");
-                System.out.println("-------------------------------------------------");
+                System.out.println("Bot Won");
+                View.toContinue();
                 return;
             }
-            System.out.println("-------------------------------------------------");
+            View.clearScreen();
         }
     }
 }

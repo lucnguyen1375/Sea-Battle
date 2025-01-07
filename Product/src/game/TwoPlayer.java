@@ -1,5 +1,6 @@
 package game;
 import data.FileRank;
+import main.View;
 import main.system;
 import template.Template;
 
@@ -8,17 +9,17 @@ public class TwoPlayer {
     Player player2;
     public void play()
     {
-        System.out.println("Nhập tên người chơi thứ nhất: ");
+        System.out.println("Enter player1's name: ");
         String name1 = system.scanner.nextLine();
         player1 = new Player(name1);
-        System.out.println("Nhập tên người chơi thứ hai: ");
+        System.out.println("Enter player2's name: ");
         String name2 = system.scanner.nextLine();
         player2 = new Player(name2);
 
-        System.out.println("-------------------------------------------------");
+        View.toContinue();
 
         // Player 1 placeship
-        System.out.println("Người chơi " + player1.getName() + " đặt tàu: ");
+        System.out.println("Player " + player1.getName() + " place ship: ");
         Template.showPlaceShipOption();
         while(true){
             int selection1 = Integer.parseInt(system.scanner.nextLine());
@@ -34,11 +35,12 @@ public class TwoPlayer {
                 Template.enterAgain();
             }
         }
+        System.out.println("Player " + player1.getName() + "'s Board: ");
         ShowBoard.showBoard(player1);
-        System.out.println("-------------------------------------------------");
+        View.toContinue();
 
         // Player 2 placeship
-        System.out.println("Người chơi " + player2.getName() + " đặt tàu: ");
+        System.out.println("Player " + player2.getName() + " place ship: ");
         Template.showPlaceShipOption();
         while(true){
             int selection2 = Integer.parseInt(system.scanner.nextLine());
@@ -54,9 +56,9 @@ public class TwoPlayer {
                 Template.enterAgain();
             }
         }
+        System.out.println("Player " + player2.getName() + "'s Board: ");
         ShowBoard.showBoard(player2);
-        System.out.println("-------------------------------------------------");
-
+        View.toContinue();
         while(true)
         {
             System.out.println("Lượt người chơi " + player1.getName());
