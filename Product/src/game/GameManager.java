@@ -1,7 +1,7 @@
 package game;
 
-import main.View;
-import main.system;
+import Screen.View;
+import Screen.Output;
 import template.Template;
 import ship.ListOfShips;
 
@@ -13,10 +13,15 @@ public class GameManager {
     public void start()
     {
         Template.showBattleMenu();
-        int selection = Integer.parseInt(system.scanner.nextLine());
+        int selection = Integer.parseInt(Output.scanner.nextLine());
 
-        System.out.println("Choose Board Size (10 -> 20):");
-        kichThuoc = Integer.parseInt(system.scanner.nextLine());
+        while(true){
+            System.out.println("Choose Board Size (10 -> 20):");
+            kichThuoc = Integer.parseInt(Output.scanner.nextLine());
+            if (kichThuoc < 10 || kichThuoc > 20)
+                Template.enterAgain();
+            else break;
+        }
         View.clearScreen();
         if (selection == 1)       { // Play with computer
             OnePlayer onePlayer = new OnePlayer();

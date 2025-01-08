@@ -1,7 +1,7 @@
-package main;
+package Screen;
 
 import java.util.Scanner;
 
-public class system {
+public class Output {
     public static Scanner scanner  = new Scanner(java.lang.System.in);
 }

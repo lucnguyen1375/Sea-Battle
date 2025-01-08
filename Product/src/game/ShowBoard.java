@@ -1,5 +1,7 @@
 package game;
 
+import Screen.Custom;
+
 public class ShowBoard {
     public static void showBoard(Player player) {
         System.out.printf("     ");
@@ -13,13 +15,24 @@ public class ShowBoard {
             System.out.printf("%-3s",i);
             for(int j = 1; j <= GameManager.kichThuoc; j+=1)
             {
-                System.out.printf(" [%s] ", player.getBoard()[i][j]);
+                if (player.getBoard()[i][j].equals("."))
+                    System.out.printf(" [%s] ", player.getBoard()[i][j]);
+                else if (player.getBoard()[i][j].equals("X"))
+                    System.out.printf(" %s[%s]%s ", Custom.BackgroundRed,player.getBoard()[i][j],Custom.Reset);
+                else if (player.getBoard()[i][j].equals("P") || player.getBoard()[i][j].equals("p"))
+                    System.out.printf(" %s[%s]%s ", Custom.BackgroundBlue,player.getBoard()[i][j],Custom.Reset);
+                else if (player.getBoard()[i][j].equals("D"))
+                    System.out.printf(" %s[%s]%s ", Custom.BackgroundGreen,player.getBoard()[i][j],Custom.Reset);
+                else if (player.getBoard()[i][j].equals("S"))
+                    System.out.printf(" %s[%s]%s ", Custom.BackgroundMagenta,player.getBoard()[i][j],Custom.Reset);
+                else if (player.getBoard()[i][j].equals("B"))
+                    System.out.printf(" %s[%s]%s ", Custom.BackgroundCyan,player.getBoard()[i][j],Custom.Reset);
             }
             System.out.printf("%n");
         }
     }
     public static void showEnemyBoard(Player player) {
-        System.out.printf("     ");
+        System.out.printf("      ");
         for(char i = 'A'; i < 'A' + GameManager.kichThuoc; i++)
         {
             System.out.printf("%-5c",i);

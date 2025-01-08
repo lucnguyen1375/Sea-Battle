@@ -1,6 +1,6 @@
 package game;
 
-import main.system;
+import Screen.Output;
 import ship.ListOfShips;
 import ship.Ship;
 import template.Template;
@@ -12,11 +12,12 @@ public class PlaceShip {
         for(Ship ship : ListOfShips.list) {
             ShowBoard.showBoard(player);
             switch(ship.getSymbol()) {
-                case "P": System.out.println("Đặt Thuyền Tuần Tra thứ nhất (kích thước 1 x " + ship.getSize() + "):");break;
-                case "p": System.out.println("Đặt Thuyền Tuần Tra thứ hai (kích thước 1 x " + ship.getSize() + "):");break;
-                case "D": System.out.println("Đặt Tàu Khu Trục (kích thước 1 x " + ship.getSize() + "):");break;
-                case "S": System.out.println("Đặt Tàu Ngầm (kích thước 1 x " + ship.getSize() + "):");break;
-                case "B": System.out.println("Đặt Thiết Giáp Hạm (kích thước 1 x " + ship.getSize() + "):");break;
+                case "P": System.out.println("Place the first Patrol Boat (Size 1 x " + ship.getSize() + "):");break;
+                case "p": System.out.println("Place the second Patrol Boat (Size 1 x " + ship.getSize() + "):");break;
+                case "D": System.out.println("Place the Destroyer Boat (Size 1 x " + ship.getSize() + "):");break;
+                case "S": System.out.println("Place the Submarine Boat (Size 1 x " + ship.getSize() + "):");break;
+                case "B": System.out.println("Place the Battle Ship (Size 1 x " + ship.getSize() + "):");break;
+
             }
 
             while(true) {
@@ -25,19 +26,19 @@ public class PlaceShip {
                 int tungdo;
                 boolean check = true;
                 while (true) {
-                    System.out.println("Chọn hướng đặt tàu:");
-                    System.out.println("1. Ngang.");
-                    System.out.println("2. Dọc");
-                    selection1 = Integer.parseInt(system.scanner.nextLine());
+                    System.out.println("Choose direction:");
+                    System.out.println("1. Horizontal (Ngang).");
+                    System.out.println("2. Vertical (Doc)");
+                    selection1 = Integer.parseInt(Output.scanner.nextLine());
                     if (selection1 == 1 || selection1 == 2) break;
-                    else System.out.println("Dữ liệu không hợp lệ. Vui lòng nhập lại.");
+                    else Template.enterAgain();
                 }
 
-                System.out.println("Nhập tọa độ điểm đầu: ");
-                System.out.printf("Nhập hoành độ: ");
-                hoanhdo = Integer.parseInt(system.scanner.nextLine());
-                System.out.printf("Chọn tung độ: ");
-                char c = system.scanner.nextLine().charAt(0);
+                System.out.println("Enter first position: ");
+                System.out.printf("Abscissa (Hoanh Do): ");
+                hoanhdo = Integer.parseInt(Output.scanner.nextLine());
+                System.out.printf("Ordinate (Tung Do): ");
+                char c = Output.scanner.nextLine().charAt(0);
                 tungdo = c - 'A' + 1;
 
                 if (hoanhdo < 1 || hoanhdo > GameManager.kichThuoc || tungdo < 1 || tungdo > GameManager.kichThuoc) {

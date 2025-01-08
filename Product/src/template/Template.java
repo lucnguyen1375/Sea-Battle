@@ -15,7 +15,7 @@ public class Template {
     }
 
     public static void showPlayerMenu() {
-        System.out.println("Lựa chọn của người chơi.");
+        System.out.println("Choose action:.");
         System.out.println("1. Show Your Board.");
         System.out.println("2. Show Enemy Board And Shoot.");
         System.out.println("3. Finish Turn.");

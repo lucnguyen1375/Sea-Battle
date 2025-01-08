@@ -1,8 +1,8 @@
 package game;
 
 import data.FileRank;
-import main.View;
-import main.system;
+import Screen.View;
+import Screen.Output;
 import template.Template;
 
 public class OnePlayer {
@@ -14,14 +14,14 @@ public class OnePlayer {
         // Player enter information and placeship
         Player player;
         System.out.println("Enter player's name: ");
-        String name = system.scanner.nextLine();
+        String name = Output.scanner.nextLine();
         player = new Player(name);
 
 
         System.out.println("Player " + player.getName() + " place ship: ");
         Template.showPlaceShipOption(); // Place by hand or randomly
         while(true){
-            int selection1 = Integer.parseInt(system.scanner.nextLine());
+            int selection1 = Integer.parseInt(Output.scanner.nextLine());
             if (selection1==1) {
                 PlaceShip.placeShip(player);
                 break;

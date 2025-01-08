@@ -1,4 +1,4 @@
-package main;
+package Screen;
 
 public class View {
     public static void clearScreen() {
@@ -8,7 +8,7 @@ public class View {
     public static void toContinue() {
         System.out.println();
         System.out.println("Enter to continue.");
-        system.scanner.nextLine();
+        Output.scanner.nextLine();
         View.clearScreen();
     }
 }

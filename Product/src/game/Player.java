@@ -1,6 +1,7 @@
 package game;
 
-import main.system;
+import Screen.Output;
+import template.Template;
 
 public class Player {
     private String name;
@@ -120,13 +121,26 @@ public class Player {
     }
 
     public ToaDo toaDoShoot(){
-        System.out.println("Chọn vị trí muốn khai hỏa:");
-        System.out.printf("Chọn hoành độ: ");
-        int x = Integer.parseInt(system.scanner.nextLine());
-        System.out.printf("Chọn tung độ: ");
-        char c = system.scanner.nextLine().charAt(0);
-        int y = c - 'A' + 1;
-        ToaDo toaDo = new ToaDo(x,y);
+        System.out.println("Enter position to shoot:");
+        System.out.printf("Enter horizontal (Hoanh Do): ");
+
+        int x,y;
+        while(true){
+            x = Integer.parseInt(Output.scanner.nextLine());
+            if (x < 1 || x > GameManager.kichThuoc)
+                Template.enterAgain();
+            else break;
+        }
+        while(true){
+            System.out.printf("Enter vertical (Tung Do): ");
+            char c = Output.scanner.nextLine().charAt(0);
+            y = c - 'A' + 1;
+            if (y < 1 || y > GameManager.kichThuoc)
+                Template.enterAgain();
+            else break;
+
+        }
+        ToaDo toaDo = new ToaDo(x, y);
         return toaDo;
     }
 

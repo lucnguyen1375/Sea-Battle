@@ -1,8 +1,7 @@
 package data;
 
 import game.Player;
-import main.View;
-import main.system;
+import Screen.View;
 
 import java.io.*;
 import java.util.ArrayList;

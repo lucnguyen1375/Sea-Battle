@@ -1,5 +1,4 @@
-import main.*;
-import game.ShowBoard;
+import Screen.*;
 import template.Template;
 import game.GameManager;
 import data.*;
@@ -12,9 +11,10 @@ public class Main {
         Template.printSeaBattle();
         GameManager Game = new GameManager();
         FileRank.loadFromFile();
+
         while(true){
             Template.showGameMenu();
-            int selection = Integer.parseInt(system.scanner.nextLine());
+            int selection = Integer.parseInt(Output.scanner.nextLine());
             View.clearScreen();
             switch(selection){
                 case 1 : FileRank.showRank(); break;

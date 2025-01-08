@@ -1,7 +1,7 @@
 package game;
 import data.FileRank;
-import main.View;
-import main.system;
+import Screen.View;
+import Screen.Output;
 import template.Template;
 
 public class TwoPlayer {
@@ -10,10 +10,10 @@ public class TwoPlayer {
     public void play()
     {
         System.out.println("Enter player1's name: ");
-        String name1 = system.scanner.nextLine();
+        String name1 = Output.scanner.nextLine();
         player1 = new Player(name1);
         System.out.println("Enter player2's name: ");
-        String name2 = system.scanner.nextLine();
+        String name2 = Output.scanner.nextLine();
         player2 = new Player(name2);
 
         View.toContinue();
@@ -22,7 +22,7 @@ public class TwoPlayer {
         System.out.println("Player " + player1.getName() + " place ship: ");
         Template.showPlaceShipOption();
         while(true){
-            int selection1 = Integer.parseInt(system.scanner.nextLine());
+            int selection1 = Integer.parseInt(Output.scanner.nextLine());
             if (selection1==1) {
                 PlaceShip.placeShip(player1);
                 break;
@@ -43,7 +43,7 @@ public class TwoPlayer {
         System.out.println("Player " + player2.getName() + " place ship: ");
         Template.showPlaceShipOption();
         while(true){
-            int selection2 = Integer.parseInt(system.scanner.nextLine());
+            int selection2 = Integer.parseInt(Output.scanner.nextLine());
             if (selection2==1) {
                 PlaceShip.placeShip(player2);
                 break;
@@ -61,24 +61,24 @@ public class TwoPlayer {
         View.toContinue();
         while(true)
         {
-            System.out.println("Lượt người chơi " + player1.getName());
+            System.out.println("Player's " + player1.getName() + "'s turn.");
             Turn.turn(player1, player2);
             if (player1.getSoTauDaPha() == 5) {
-                System.out.println(player1.getName() + " đã giành chiến thắng");
-                System.out.println("-------------------------------------------------");
+                System.out.println(player1.getName() + " win!");
+                View.toContinue();
                 FileRank.updateBxh(player1);
                 return;
             }
-            System.out.println("-------------------------------------------------");
-            System.out.println("Lượt người chơi " + player2.getName());
+            View.clearScreen();
+            System.out.println("Player's " + player2.getName() + "'s turn.");
             Turn.turn(player2, player1);
             if (player2.getSoTauDaPha() == 5) {
-                System.out.println(player2.getName() + " đã giành chiến thắng");
-                System.out.println("-------------------------------------------------");
+                System.out.println(player2.getName() + " win!");
+                View.toContinue();
                 FileRank.updateBxh(player2);
                 return;
             }
-            System.out.println("-------------------------------------------------");
+            View.clearScreen();
         }
     }
 }

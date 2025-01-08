@@ -1,6 +1,7 @@
 package game;
 
-import main.system;
+import Screen.Output;
+import Screen.View;
 import template.Template;
 
 import java.util.Random;
@@ -9,22 +10,22 @@ public class Turn {
     public static void turn(Player player, Player enemy)
     {
         // In trạng thái của người chơi
+        System.out.println("Your state: ");
         System.out.println("A number of shoot: " + player.getSoODaBan());
-        System.out.println("A number of ship you had destroy: " + player.getSoTauDaPha());
-        System.out.println("Số tàu còn lại của người chơi: " + player.getSoTauConLai());
-        System.out.println("Trạng thái tàu của " + player.getName());
+        System.out.println("A number of ship you had destroyed: " + player.getSoTauDaPha());
+        System.out.println("Your remaining ship: " + player.getSoTauConLai());
         int checkKhaiHoa = 0;
         while(true)
         {
             Template.showPlayerMenu();
-            int selection = Integer.parseInt(system.scanner.nextLine());
+            int selection = Integer.parseInt(Output.scanner.nextLine());
             switch(selection)
             {
                 case 1: ShowBoard.showBoard(player); break;
                 case 2:
                     if (checkKhaiHoa == 1)
                     {
-                        System.out.println("Bạn đã khai hỏa rồi!");
+                        System.out.println("You have shooted!");
                         break;
                     }
                     checkKhaiHoa = 1;
@@ -36,11 +37,11 @@ public class Turn {
                         ToaDo toaDo = player.toaDoShoot();
                         boolean continueShoot = CheckShoot.shoot(toaDo, player, enemy);
                         if (continueShoot == false) {
-                            System.out.println("Bạn đã bắn trượt!");
+                            System.out.println("Oops! You missed!");
                             break;
                         }
                         else {
-                            System.out.println("Bạn đã bắn trúng!");
+                            System.out.println("Good! You have hit the enemy board!");
                         }
                     }
                     break;
@@ -89,8 +90,9 @@ public class Turn {
             continueShoot = CheckShoot.shoot(toaDo, bot, player);
             bot.updatePriority(x,y,100); // value = 100 -> used
             if (continueShoot == false) {
-                System.out.printf("----Bot đã bắn %d lần----%n", bot.soLanBan);
+                System.out.printf("----Bot has hit your ship %d times", bot.soLanBan - 1);
                 ShowBoard.showBotEnemyBoards(bot);
+                View.toContinue();
                 return;
             }
             else {
