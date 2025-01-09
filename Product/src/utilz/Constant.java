@@ -1,6 +1,12 @@
-package Screen;
+package utilz;
 
-public class Custom {
+import java.util.Scanner;
+
+public class Constant {
+    // Scanner
+    public static Scanner scanner  = new Scanner(java.lang.System.in);
+
+    // Custom text and background
     public static String Black = "\u001b[30m";
     public static String Red = "\u001b[31m";
     public static String Green = "\u001b[32m";
@@ -18,7 +24,7 @@ public class Custom {
     public static String BrightCyan = "\u001b[36;1m";
     public static String BrightWhite = "\u001b[37;1m";
     public static String Reset = "\u001b[0m";
-
+//utility
     public static String BackgroundBlack = "\u001b[40m";
     public static String BackgroundRed = "\u001b[41m";
     public static String BackgroundGreen = "\u001b[42m";
@@ -35,4 +41,17 @@ public class Custom {
     public static String BackgroundBrightMagenta = "\u001b[45;1m";
     public static String BackgroundBrightCyan = "\u001b[46;1m";
     public static String BackgroundBrightWhite = "\u001b[47;1m";
+
+    // Screen
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    public static void enterToContinue() {
+        System.out.println();
+        System.out.println("Enter to continue.");
+        Constant.scanner.nextLine();
+        Constant.clearScreen();
+    }
 }

@@ -1,5 +1,4 @@
-import Screen.*;
-import template.Template;
+import utilz.*;
 import game.GameManager;
 import data.*;
 
@@ -7,22 +6,22 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        View.clearScreen();
-        Template.printSeaBattle();
+        Constant.clearScreen();
+        Unique.printSeaBattle();
         GameManager Game = new GameManager();
         FileRank.loadFromFile();
 
         while(true){
-            Template.showGameMenu();
-            int selection = Integer.parseInt(Output.scanner.nextLine());
-            View.clearScreen();
+            Unique.showGameMenu();
+            int selection = Integer.parseInt(Constant.scanner.nextLine());
+            Constant.clearScreen();
             switch(selection){
-                case 1 : FileRank.showRank(); break;
-                case 2 : Game.start(); break;
-                case 3 : FileRank.saveToFile(); return;
-                default : Template.enterAgain();
+                case 1 : FileRank.showRank(); break; // Leaderboard
+                case 2 : Game.start(); break;   // Game
+                case 3 : FileRank.saveToFile(); return; // exit game
+                default : Unique.enterAgain();
             }
-            View.clearScreen();
+            Constant.clearScreen();
         }
     }
 }

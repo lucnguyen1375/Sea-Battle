@@ -1,8 +1,6 @@
 package game;
 
-import Screen.Output;
-import Screen.View;
-import template.Template;
+import utilz.*;
 
 import java.util.Random;
 
@@ -17,8 +15,8 @@ public class Turn {
         int checkKhaiHoa = 0;
         while(true)
         {
-            Template.showPlayerMenu();
-            int selection = Integer.parseInt(Output.scanner.nextLine());
+            Unique.showPlayerMenu();
+            int selection = Integer.parseInt(Constant.scanner.nextLine());
             switch(selection)
             {
                 case 1: ShowBoard.showBoard(player); break;
@@ -92,7 +90,7 @@ public class Turn {
             if (continueShoot == false) {
                 System.out.printf("----Bot has hit your ship %d times", bot.soLanBan - 1);
                 ShowBoard.showBotEnemyBoards(bot);
-                View.toContinue();
+                Constant.enterToContinue();
                 return;
             }
             else {

@@ -1,11 +1,11 @@
 package data;
 
 import game.Player;
-import Screen.View;
+import utilz.Constant;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class FileRank {
@@ -37,10 +37,15 @@ public class FileRank {
             System.out.printf("|%-5d|%-20s|%-5d|%n", (i + 1), rank.get(i).getName(), rank.get(i).getScore());
         }
         System.out.println("----------------------------------");
-        View.toContinue();
+        Constant.enterToContinue();
     }
     public static void sortBxh() {
-        Collections.sort(rank, new RankComparator());
+        rank.sort(new Comparator<PlayerRank>() {
+            @Override
+            public int compare(PlayerRank p1, PlayerRank p2) {
+                return p1.getScore() - p2.getScore();
+            }
+        });
     }
 
     public static void updateBxh(Player player){
@@ -62,7 +67,7 @@ public class FileRank {
         FileWriter fw = new FileWriter(f);
         BufferedWriter bw = new BufferedWriter(fw);
         for(PlayerRank p : rank ) {
-            bw.write(p.getName() + "\n" + p.getScore());
+            bw.write(p.getName() + "\n" + p.getScore() +'\n');
         }
         bw.close();fw.close();
     }

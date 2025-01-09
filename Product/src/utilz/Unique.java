@@ -1,6 +1,6 @@
-package template;
+package utilz;
 
-public class Template {
+public class Unique {
     public static void showGameMenu(){
         System.out.println("MENU");
         System.out.println("1. Leaderboard.");

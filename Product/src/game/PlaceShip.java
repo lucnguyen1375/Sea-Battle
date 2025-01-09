@@ -1,6 +1,6 @@
 package game;
 
-import Screen.Output;
+import utilz.*;
 import ship.ListOfShips;
 import ship.Ship;
 import template.Template;
@@ -17,7 +17,6 @@ public class PlaceShip {
                 case "D": System.out.println("Place the Destroyer Boat (Size 1 x " + ship.getSize() + "):");break;
                 case "S": System.out.println("Place the Submarine Boat (Size 1 x " + ship.getSize() + "):");break;
                 case "B": System.out.println("Place the Battle Ship (Size 1 x " + ship.getSize() + "):");break;
-
             }
 
             while(true) {
@@ -29,26 +28,26 @@ public class PlaceShip {
                     System.out.println("Choose direction:");
                     System.out.println("1. Horizontal (Ngang).");
                     System.out.println("2. Vertical (Doc)");
-                    selection1 = Integer.parseInt(Output.scanner.nextLine());
+                    selection1 = Integer.parseInt(Constant.scanner.nextLine());
                     if (selection1 == 1 || selection1 == 2) break;
-                    else Template.enterAgain();
+                    else Unique.enterAgain();
                 }
 
                 System.out.println("Enter first position: ");
                 System.out.printf("Abscissa (Hoanh Do): ");
-                hoanhdo = Integer.parseInt(Output.scanner.nextLine());
+                hoanhdo = Integer.parseInt(Constant.scanner.nextLine());
                 System.out.printf("Ordinate (Tung Do): ");
-                char c = Output.scanner.nextLine().charAt(0);
+                char c = Constant.scanner.nextLine().charAt(0);
                 tungdo = c - 'A' + 1;
 
                 if (hoanhdo < 1 || hoanhdo > GameManager.kichThuoc || tungdo < 1 || tungdo > GameManager.kichThuoc) {
-                    Template.enterAgain();
+                    Unique.enterAgain();
                     check  = false;
                 }
                 else if (selection1 == 1) {
                     for(int i = 0; i < ship.getSize(); i++){
                         if (tungdo + i > GameManager.kichThuoc || (player.getBoard()[hoanhdo][tungdo + i]).equals(".") == false) {
-                            Template.enterAgain();
+                            Unique.enterAgain();
                             check = false;
                             break;
                         }
@@ -57,7 +56,7 @@ public class PlaceShip {
                 else if (selection1 == 2) {
                     for(int i = 0; i < ship.getSize(); i++){
                         if (hoanhdo + i > GameManager.kichThuoc || (player.getBoard()[hoanhdo + i][tungdo]).equals(".") == false) {
-                            Template.enterAgain();
+                            Unique.enterAgain();
                             check = false;
                             break;
                         }

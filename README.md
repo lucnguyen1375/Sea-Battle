@@ -26,7 +26,7 @@ The project was done by [Nguyễn Văn Minh Lực](https://github.com/lucnguyen1
 ```bash
 
 ├── src
-│   ├── main
+│   ├── utilz
 │   │   ├── Main.java
 │   │   ├── system.java
 │   ├── data

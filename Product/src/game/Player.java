@@ -1,6 +1,6 @@
 package game;
 
-import Screen.Output;
+import utilz.*;
 import template.Template;
 
 public class Player {
@@ -126,17 +126,17 @@ public class Player {
 
         int x,y;
         while(true){
-            x = Integer.parseInt(Output.scanner.nextLine());
+            x = Integer.parseInt(Constant.scanner.nextLine());
             if (x < 1 || x > GameManager.kichThuoc)
-                Template.enterAgain();
+                Unique.enterAgain();
             else break;
         }
         while(true){
             System.out.printf("Enter vertical (Tung Do): ");
-            char c = Output.scanner.nextLine().charAt(0);
+            char c = Constant.scanner.nextLine().charAt(0);
             y = c - 'A' + 1;
             if (y < 1 || y > GameManager.kichThuoc)
-                Template.enterAgain();
+                Unique.enterAgain();
             else break;
 
         }

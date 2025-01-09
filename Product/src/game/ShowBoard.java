@@ -1,6 +1,6 @@
 package game;
 
-import Screen.Custom;
+import utilz.Constant;
 
 public class ShowBoard {
     public static void showBoard(Player player) {
@@ -18,15 +18,15 @@ public class ShowBoard {
                 if (player.getBoard()[i][j].equals("."))
                     System.out.printf(" [%s] ", player.getBoard()[i][j]);
                 else if (player.getBoard()[i][j].equals("X"))
-                    System.out.printf(" %s[%s]%s ", Custom.BackgroundRed,player.getBoard()[i][j],Custom.Reset);
+                    System.out.printf(" %s[%s]%s ", Constant.BackgroundRed,player.getBoard()[i][j], Constant.Reset);
                 else if (player.getBoard()[i][j].equals("P") || player.getBoard()[i][j].equals("p"))
-                    System.out.printf(" %s[%s]%s ", Custom.BackgroundBlue,player.getBoard()[i][j],Custom.Reset);
+                    System.out.printf(" %s[%s]%s ", Constant.BackgroundBlue,player.getBoard()[i][j], Constant.Reset);
                 else if (player.getBoard()[i][j].equals("D"))
-                    System.out.printf(" %s[%s]%s ", Custom.BackgroundGreen,player.getBoard()[i][j],Custom.Reset);
+                    System.out.printf(" %s[%s]%s ", Constant.BackgroundGreen,player.getBoard()[i][j], Constant.Reset);
                 else if (player.getBoard()[i][j].equals("S"))
-                    System.out.printf(" %s[%s]%s ", Custom.BackgroundMagenta,player.getBoard()[i][j],Custom.Reset);
+                    System.out.printf(" %s[%s]%s ", Constant.BackgroundMagenta,player.getBoard()[i][j], Constant.Reset);
                 else if (player.getBoard()[i][j].equals("B"))
-                    System.out.printf(" %s[%s]%s ", Custom.BackgroundCyan,player.getBoard()[i][j],Custom.Reset);
+                    System.out.printf(" %s[%s]%s ", Constant.BackgroundCyan,player.getBoard()[i][j], Constant.Reset);
             }
             System.out.printf("%n");
         }
@@ -43,7 +43,12 @@ public class ShowBoard {
             System.out.printf("%-3s ",i);
             for(int j = 1; j <= GameManager.kichThuoc; j+=1)
             {
-                System.out.printf(" [%s] ", player.getEnemyBoard()[i][j]);
+                    if (player.getEnemyBoard()[i][j].equals("?"))
+                        System.out.printf(" [%s] ", player.getEnemyBoard()[i][j]);
+                    else if (player.getEnemyBoard()[i][j].equals("X"))
+                        System.out.printf(" %s[%s]%s ", Constant.BackgroundRed,player.getEnemyBoard()[i][j], Constant.Reset);
+                    else if (player.getEnemyBoard()[i][j].equals("V"))
+                        System.out.printf(" %s[%s]%s ", Constant.BackgroundGreen,player.getEnemyBoard()[i][j], Constant.Reset);
             }
             System.out.printf("%n");
         }
